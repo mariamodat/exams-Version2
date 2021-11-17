@@ -39,7 +39,7 @@ public class UserService {
     }
 
 
-    public Optional<String> signIn(String username, String password){
+    public Optional<String> authenticate(String username, String password){
         Optional<String > token = Optional.empty();
         Optional<SecurityUser> theUser = userRepository.getUserByUsername(username);
         if (theUser.isPresent()){

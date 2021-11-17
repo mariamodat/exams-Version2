@@ -1,5 +1,5 @@
 server:
-  port: 8989
+  port: 9898
 
 spring:
   application:
@@ -12,9 +12,9 @@ spring:
     generate-ddl: true
     show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/trial2Exams
-    username: maria
-    password: Aspire1234
+    url: jdbc:mysql://localhost:3306/*******
+    username: username
+    password: password
 
 
 

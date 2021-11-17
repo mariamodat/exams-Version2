@@ -8,17 +8,13 @@ import com.task.examstrial1.model.SecurityRole;
 import com.task.examstrial1.model.SecurityUser;
 import com.task.examstrial1.security.AuthenticationRequest;
 import com.task.examstrial1.security.AuthenticationResponse;
-import com.task.examstrial1.security.JwtProvider;
-import com.task.examstrial1.security.MyUserDetailsService;
 import com.task.examstrial1.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -46,7 +42,7 @@ public class UserController {
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws BadCredentialsException {
 
-        Optional<String> token = userService.signIn(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        Optional<String> token = userService.authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         return ResponseEntity.ok(new AuthenticationResponse(token
                 .orElseThrow(()-> new BadCredentialsException("Wrong username or password! "))));
     }
@@ -80,6 +76,17 @@ public class UserController {
                 .map(this::toUserDTO)
                 .collect(Collectors.toList());
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     @PreAuthorize("hasAuthority('admin')")
