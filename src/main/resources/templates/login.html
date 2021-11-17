@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/loginStyle.css}">
+    <!--    font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <title>Login</title>
+
+</head>
+<body>
+
+<form th:action="@{/login}" method="post">
+
+    <div class="container">
+        <label ><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+        <br>
+        <br>
+        <label ><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        <br>
+        <br>
+        <button type="submit">Login</button>
+        <label style="font-size: 10px">
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        <br>
+        <br>
+    </div>
+    <a href="/signup"></a>
+    <div class="container" >
+        <span>forgot password <a href="http://localhost:8080/signup"> reset password </a></span>
+    </div>
+</form>
+</body>
